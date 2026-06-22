@@ -1,0 +1,465 @@
+Software Testing is the process of verifying and validating a software application to ensure it meets requirements and works correctly without defects.
+
+1. What is Software Testing?
+
+Software Testing is used to:
+
+Find defects (bugs)
+Verify requirements
+Improve software quality
+Ensure reliability and performance
+Reduce business risks
+Example
+
+If a login page should allow valid users to log in:
+
+Enter correct credentials → Login successful ✅
+Enter wrong credentials → Error message displayed ✅
+
+Testing verifies both scenarios.
+
+2. SDLC (Software Development Life Cycle)
+
+SDLC describes how software is developed.
+
+Phases
+Requirement Gathering
+Analysis
+Design
+Development
+Testing
+Deployment
+Maintenance
+QA Role
+
+QA involvement starts from requirement analysis and continues until production release.
+
+3. STLC (Software Testing Life Cycle)
+1. Requirement Analysis
+Understand requirements
+Identify testable requirements
+2. Test Planning
+Define scope
+Estimate effort
+Select tools
+3. Test Case Development
+Create test scenarios
+Create test cases
+Prepare test data
+4. Environment Setup
+Configure testing environment
+5. Test Execution
+Execute test cases
+Report defects
+6. Test Closure
+Prepare reports
+Lessons learned
+4. Software Testing Principles
+1. Testing Shows Presence of Defects
+
+Testing finds bugs but cannot prove software is bug-free.
+
+2. Exhaustive Testing is Impossible
+
+You cannot test every possible input.
+
+3. Early Testing
+
+Start testing as early as possible.
+
+4. Defect Clustering
+
+Most defects are found in a few modules.
+
+5. Pesticide Paradox
+
+Repeated test cases eventually stop finding new bugs.
+
+6. Testing is Context Dependent
+
+Testing approach varies by application.
+
+7. Absence of Errors Fallacy
+
+Bug-free software is useless if it doesn't meet user needs.
+
+5. Types of Testing
+Manual Testing
+
+Testing without automation tools.
+
+Advantages
+Human observation
+Better exploratory testing
+Disadvantages
+Time-consuming
+Repetitive work
+Automation Testing
+
+Testing using scripts and tools.
+
+Advantages
+Faster execution
+Reusable scripts
+Suitable for regression
+Disadvantages
+Initial setup cost
+Requires programming knowledge
+6. Levels of Testing
+Unit Testing
+
+Performed by developers.
+
+Example:
+
+int sum(int a, int b)
+
+Testing the function independently.
+
+Integration Testing
+
+Testing interaction between modules.
+
+Example:
+
+Login Module → Dashboard Module
+System Testing
+
+Testing the complete application.
+
+Acceptance Testing
+
+Performed by clients/users.
+
+Types
+Alpha Testing
+Beta Testing
+7. Functional Testing
+
+Checks whether functionality works according to requirements.
+
+Examples
+Login
+Registration
+Search
+Payment
+8. Non-Functional Testing
+
+Checks quality attributes.
+
+Types
+Performance Testing
+Security Testing
+Usability Testing
+Compatibility Testing
+Reliability Testing
+9. Smoke Testing
+
+Checks critical functionalities after a new build.
+
+Example
+Application launches
+Login works
+Dashboard opens
+
+If smoke testing fails, build is rejected.
+
+10. Sanity Testing
+
+Checks a specific functionality after bug fixes.
+
+Example
+
+Bug fixed in login page.
+
+Only login-related features are tested.
+
+11. Regression Testing
+
+Ensures new changes do not affect existing functionality.
+
+Example
+
+Developer modifies payment feature.
+
+Tester verifies:
+
+Payment
+Login
+Search
+Cart
+
+still work correctly.
+
+12. Retesting
+
+Testing the same defect after developer fixes it.
+
+13. Exploratory Testing
+
+Testing without predefined test cases.
+
+Tester explores application behavior.
+
+14. Ad-Hoc Testing
+
+Informal testing without documentation.
+
+15. Black Box Testing
+
+Tester does not know internal code.
+
+Focus:
+
+Inputs
+Outputs
+16. White Box Testing
+
+Tester knows internal code structure.
+
+Focus:
+
+Code coverage
+Logic paths
+17. Grey Box Testing
+
+Combination of Black Box and White Box.
+
+18. Test Scenario
+
+High-level functionality to test.
+
+Example
+
+Login functionality
+
+19. Test Case
+
+Detailed steps for testing.
+
+Example
+Field	Value
+Test Case ID	TC001
+Module	Login
+Steps	Enter username and password
+Expected Result	Login successful
+20. Test Data
+
+Data used during testing.
+
+Example
+Username: admin
+Password: admin123
+21. Defect (Bug)
+
+A defect is a mismatch between expected and actual results.
+
+22. Defect Life Cycle
+New
+↓
+Assigned
+↓
+Open
+↓
+Fixed
+↓
+Retest
+↓
+Verified
+↓
+Closed
+
+Possible alternate states:
+
+Reopened
+Rejected
+Deferred
+23. Defect Severity
+Critical
+
+Application crash
+
+Major
+
+Important feature not working
+
+Minor
+
+Small functional issue
+
+Trivial
+
+UI issue
+
+24. Defect Priority
+High
+
+Fix immediately
+
+Medium
+
+Fix soon
+
+Low
+
+Can wait
+
+25. Agile Methodology
+
+Most companies use Agile.
+
+Scrum Events
+Sprint Planning
+Daily Standup
+Sprint Review
+Retrospective
+Sprint Duration
+
+Usually 2 weeks
+
+26. Jira
+
+Common QA activities:
+
+Create defects
+Create stories
+Track progress
+Sprint management
+27. SQL for Testers
+
+Important Commands
+
+SELECT * FROM Users;
+INSERT INTO Users VALUES();
+UPDATE Users;
+DELETE FROM Users;
+Important Concepts
+Primary Key
+Foreign Key
+Joins
+Group By
+Order By
+28. API Testing
+
+API allows communication between applications.
+
+Methods
+GET
+POST
+PUT
+PATCH
+DELETE
+Tools
+Postman
+REST Assured
+29. Selenium Automation
+Components
+WebDriver
+Grid
+IDE
+Common Commands
+driver.get(url);
+
+driver.findElement(By.id());
+
+driver.click();
+
+driver.sendKeys();
+
+driver.quit();
+30. TestNG
+
+Features:
+
+Annotations
+Assertions
+Reporting
+Parallel Execution
+Annotations
+@BeforeMethod
+
+@Test
+
+@AfterMethod
+31. Maven
+
+Used for:
+
+Dependency Management
+Build Management
+32. Git & GitHub
+Commands
+git clone
+git add .
+git commit
+git push
+git pull
+
+Useful for storing automation projects and team collaboration.
+
+33. Playwright
+
+Modern automation tool.
+
+Features:
+
+Fast execution
+Auto waits
+Multiple browser support
+API testing support
+
+Languages:
+
+JavaScript
+TypeScript
+Java
+Python
+C#
+34. Jenkins
+
+CI/CD tool used to:
+
+Trigger automation tests
+Schedule execution
+Generate reports
+35. Performance Testing
+
+Tool:
+
+Apache JMeter
+
+Types:
+
+Load Testing
+Stress Testing
+Spike Testing
+Volume Testing
+36. QA Interview Topics for Freshers
+Manual Testing
+SDLC
+STLC
+Defect Life Cycle
+Severity vs Priority
+Smoke vs Sanity
+Regression vs Retesting
+SQL
+Joins
+Queries
+Constraints
+Java
+OOP
+Collections
+Exceptions
+Selenium
+XPath
+Waits
+Actions Class
+WebDriver Methods
+API Testing
+HTTP Methods
+Status Codes
+JSON
+Agile
+Scrum
+Sprint
+Jira
