@@ -11,4 +11,11 @@ Employee & Department SQL Assignment
 9. Find duplicate records
 10. Remove duplicate records
 
+//Advance query task
+1. Add some records in the existing table
+2. Apply window function on the data
+3. Apply View on the data
+4. Apply Triggers on the data
+5. Handle Case When in the data
+   
 Database: PostgreSQL
