@@ -1,0 +1,195 @@
+--1.Insert new records
+
+INSERT INTO emp (id, name, salary, d_id, hire_date)
+VALUES
+(6, 'rohit', 60000, 102, '2026-05-15'),
+(7, 'akash', 55000, 101, '2026-04-10'),
+(8, 'rahul', 65000, 103, '2026-03-20');
+
+select * from emp;
+INSERT INTO emp (id, name, salary, d_id, hire_date)
+VALUES (4, 'sanket', 45000, 101, '2025-10-05');
+
+SELECT * FROM emp
+ORDER BY id;
+
+--window functions----
+-- ROW_NUMBER()
+
+SELECT *,
+ROW_NUMBER() OVER(ORDER BY salary DESC) AS row_number
+FROM emp;
+
+-- RANK()
+
+SELECT *,
+RANK() OVER(ORDER BY salary DESC) AS rank
+FROM emp;
+
+-- DENSE_RANK()
+
+SELECT *,
+DENSE_RANK() OVER(ORDER BY salary DESC) AS dense_rank
+FROM emp;
+
+-- NTILE()
+
+SELECT *,
+NTILE(4) OVER(ORDER BY salary DESC) AS bucket
+FROM emp;
+
+-- LAG()
+
+SELECT *,
+LAG(salary) OVER(ORDER BY salary DESC) AS previous_salary
+FROM emp;
+
+-- LEAD()
+
+SELECT *,
+LEAD(salary) OVER(ORDER BY salary DESC) AS next_salary
+FROM emp;
+
+-- FIRST_VALUE()
+
+SELECT *,
+FIRST_VALUE(salary)
+OVER(ORDER BY salary DESC)
+AS highest_salary
+FROM emp;
+
+-- LAST_VALUE()
+
+SELECT *,
+LAST_VALUE(salary)
+OVER(
+ORDER BY salary DESC
+ROWS BETWEEN UNBOUNDED PRECEDING
+AND UNBOUNDED FOLLOWING
+)
+AS lowest_salary
+FROM emp;
+
+-- SUM()
+
+SELECT *,
+SUM(salary)
+OVER(ORDER BY salary DESC)
+AS running_total
+FROM emp;
+
+-- AVG()
+
+SELECT *,
+AVG(salary)
+OVER()
+AS average_salary
+FROM emp;
+
+-- COUNT()
+
+SELECT *,
+COUNT(*)
+OVER()
+AS total_employees
+FROM emp;
+
+-- MAX()
+
+SELECT *,
+MAX(salary)
+OVER()
+AS max_salary
+FROM emp;
+
+-- MIN()
+
+SELECT *,
+MIN(salary)
+OVER()
+AS min_salary
+FROM emp;
+
+-- PARTITION BY
+
+SELECT *,
+RANK()
+OVER(
+PARTITION BY d_id
+ORDER BY salary DESC
+)
+AS department_rank
+FROM emp;
+
+-- Running Total Department Wise
+
+SELECT *,
+SUM(salary)
+OVER(
+PARTITION BY d_id
+ORDER BY salary
+)
+AS department_running_total
+FROM emp;
+
+--veiw
+
+CREATE VIEW employee_details AS
+
+SELECT
+e.id,
+e.name,
+e.salary,
+d.d_name
+
+FROM emp e
+INNER JOIN dept d
+
+ON e.d_id=d.d_id;
+
+SELECT * FROM employee_details;
+
+
+--Trigger
+
+CREATE TABLE emp_audit (
+    audit_id SERIAL PRIMARY KEY,
+    emp_id INT,
+    action_time TIMESTAMP
+);
+
+CREATE OR REPLACE FUNCTION log_employee_insert()
+RETURNS TRIGGER AS
+$$
+BEGIN
+    INSERT INTO emp_audit(emp_id, action_time)
+    VALUES (NEW.id, CURRENT_TIMESTAMP);
+
+    RETURN NEW;
+END;
+$$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER employee_insert_trigger
+AFTER INSERT
+ON emp
+FOR EACH ROW
+EXECUTE FUNCTION log_employee_insert();
+
+INSERT INTO emp
+VALUES (9, 'vikas', 58000, 102, '2026-06-25');
+
+SELECT * FROM emp_audit;
+
+
+---case when
+
+SELECT id,
+       name,
+       salary,
+       CASE
+           WHEN salary >= 60000 THEN 'High Salary'
+           WHEN salary >= 50000 THEN 'Medium Salary'
+           ELSE 'Low Salary'
+       END AS salary_grade
+FROM emp;
